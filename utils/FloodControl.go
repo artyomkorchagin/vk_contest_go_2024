@@ -10,8 +10,8 @@ import (
 )
 
 var (
-	floodcfg  = "./floodcfg.yaml"
-	servercfg = "./servercfg.yaml"
+	floodcfg  = ".internal/config/floodcfg.yaml"
+	servercfg = ".internal/config/servercfg.yaml"
 )
 
 type PostgresConnectionConfig struct {
