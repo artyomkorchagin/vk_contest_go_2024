@@ -3,7 +3,7 @@ package utils
 import (
 	"context"
 	"fmt"
-	"github.com/jackc/pgx/v4"
+	"github.com/jackc/pgx/v4/pgxpool"
 	"gopkg.in/yaml.v2"
 	"os"
 	"time"
@@ -25,7 +25,7 @@ type PostgresConnectionConfig struct {
 type FloodControl struct {
 	MaxTries int `yaml:"maxTries"` // K - количество вызовов
 	Interval int `yaml:"interval"` // N - секунд
-	Db       *pgx.Conn
+	Db       *pgxpool.Pool
 	Duration time.Duration
 }
 
@@ -47,7 +47,7 @@ func LoadDbConfig() (*PostgresConnectionConfig, error) {
 func NewFloodControl(cfg *PostgresConnectionConfig) (*FloodControl, error) {
 	fc := FloodControl{}
 	connectionStr := fmt.Sprintf("host=%s port=%d dbname=%s user=%s password=%s", cfg.Host, cfg.Port, cfg.Database, cfg.Username, cfg.Password)
-	conn, err := pgx.Connect(context.Background(), connectionStr)
+	conn, err := pgxpool.Connect(context.Background(), connectionStr)
 	if err != nil {
 		return nil, err
 	}
