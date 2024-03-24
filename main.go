@@ -2,18 +2,10 @@ package main
 
 import (
 	"context"
-	"fmt"
-	"log"
-	"task/utils"
 )
 
 func main() {
-	fc, err := utils.NewFloodControl()
-	if err != nil {
-		log.Fatal(err)
-	}
-	
-	fmt.Println(fc)
+
 }
 
 // FloodControl интерфейс, который нужно реализовать.
