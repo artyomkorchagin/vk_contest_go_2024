@@ -2,13 +2,10 @@ package main
 
 import (
 	"context"
-	"task/utils"
-	"testing"
 )
 
 func main() {
-	var t testing.T
-	utils.TestFloodControl(&t)
+
 }
 
 // FloodControl интерфейс, который нужно реализовать.

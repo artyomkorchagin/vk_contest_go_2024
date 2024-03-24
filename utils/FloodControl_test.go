@@ -22,12 +22,12 @@ func TestFloodControl(t *testing.T) {
 		pool.Close()
 	})
 
-	_, err = pool.Exec(context.Background(), "CREATE TABLE test_flood (user_id BIGINT NOT NULL, request_time TIMESTAMP NOT NULL);")
+	_, err = pool.Exec(context.Background(), "CREATE TABLE requests (user_id BIGINT NOT NULL, request_time TIMESTAMP NOT NULL);")
 	if err != nil {
 		t.Fatal(err)
 	}
 	t.Cleanup(func() {
-		_, _ = pool.Exec(context.Background(), "DROP TABLE test_flood")
+		_, _ = pool.Exec(context.Background(), "DROP TABLE requests")
 	})
 
 	fc, err := NewFloodControl(cfg)
@@ -45,7 +45,7 @@ func TestFloodControl(t *testing.T) {
 		t.Error("expected flood control to pass")
 	}
 
-	for i := 0; i < 9; i++ {
+	for i := 0; i < 10; i++ {
 		_, err := fc.Check(context.Background(), 1)
 		if err != nil {
 			t.Fatal(err)
