@@ -11,4 +11,4 @@
 # Необязательно, но было бы круто
 
 Хорошо, если добавите поддержку конфигурации итоговой реализации. Параметры — на ваше усмотрение. 
-![alt text]([https://imgur.com/a/ZbBZ8iU](https://imgur.com/W1DMZlk)https://imgur.com/W1DMZlk)
+![alt text](https://imgur.com/W1DMZlk)
